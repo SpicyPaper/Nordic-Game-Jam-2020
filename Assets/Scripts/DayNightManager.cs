@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
@@ -23,6 +24,7 @@ public class DayNightManager : MonoBehaviour
     private Vector3 defaultMoonPosition;
     private float defaultGlobalLightIntensity;
     private bool isDay;
+    private bool isPaused;
 
     [HideInInspector] public static DayNightManager instance;
 
@@ -54,7 +56,9 @@ public class DayNightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
+        if (!isPaused)
+            currentTime += Time.deltaTime;
+
         print(currentTime);
         if (isDay && currentTime >= DayDuration * DarkStart)
         {
@@ -72,5 +76,20 @@ public class DayNightManager : MonoBehaviour
                 StartDay();
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        GameHandler.OnPauseResumeGameEvent += PauseResumeGame;
+    }
+
+    private void PauseResumeGame(bool isPaused)
+    {
+        this.isPaused = isPaused;
+    }
+
+    private void OnDisable()
+    {
+        GameHandler.OnPauseResumeGameEvent -= PauseResumeGame;
     }
 }
