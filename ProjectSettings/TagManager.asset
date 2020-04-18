@@ -11,6 +11,8 @@ TagManager:
   - Little_Bush
   - Crystal
   - Little_Crystal
+  - Projectile
+  - Monster
   layers:
   - Default
   - TransparentFX
