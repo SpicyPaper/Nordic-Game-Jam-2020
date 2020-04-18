@@ -13,6 +13,9 @@ TagManager:
   - Big_Crystal
   - Medium_Crystal
   - Small_Crystal
+  - Projectile
+  - Monster
+  - Turret
   layers:
   - Default
   - TransparentFX
