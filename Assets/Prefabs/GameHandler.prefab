@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &783921674758389757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2969482691597773015}
+  - component: {fileID: 1363498067185220848}
+  m_Layer: 0
+  m_Name: ChestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2969482691597773015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783921674758389757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7650486703030361822}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1363498067185220848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783921674758389757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6c4bd3f2d24784db2d8cdd4869d28a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestSpawnersParent: {fileID: 0}
+  chestModel: {fileID: 0}
 --- !u!1 &5143139002361020576
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +162,7 @@ MonoBehaviour:
   enemieSpawnersParent: {fileID: 0}
   enemiesParent: {fileID: 0}
   enemieModel: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &7650486701653313884
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +422,7 @@ Transform:
   - {fileID: 7650486702661369538}
   - {fileID: 8468399415603876314}
   - {fileID: 7229449379118836301}
+  - {fileID: 2969482691597773015}
   - {fileID: 5189442767441098428}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -437,7 +484,7 @@ PrefabInstance:
     - target: {fileID: 7216895788379364085, guid: 8bf99a01e091e26409595a774208fac9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7216895788379364085, guid: 8bf99a01e091e26409595a774208fac9,
         type: 3}
