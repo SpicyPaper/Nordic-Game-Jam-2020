@@ -44,12 +44,12 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     private void OnEnable()
     {
-        DayNightManager.OnStartDayEvent += StartDay;
+        DayNightManager.OnStartNightEvent += StartNight;
     }
 
     private void OnDisable()
     {
-        DayNightManager.OnStartDayEvent -= StartDay;
+        DayNightManager.OnStartNightEvent -= StartNight;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -112,7 +112,11 @@ public class IsometricPlayerMovementController : MonoBehaviour
                 float scale = Mathf.Lerp(0f, scalePerStep, Time.deltaTime);
                 currentElapsedScaleStep += scale;
 
-                currentProducer.GetComponentInChildren<Renderer>().transform.localScale -= Vector3.one * scale;
+                Renderer[] renderer = currentProducer.GetComponentsInChildren<Renderer>();
+                foreach (var item in renderer)
+                {
+                    item.transform.localScale -= Vector3.one * scale;
+                }
 
                 if (elapsedTimeCollectingRessource >= NEEDED_TIME_COLLECT_ONE_RESSOURCE_IN_S)
                 {
@@ -178,7 +182,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
         }
     }
 
-    private void StartDay()
+    private void StartNight()
     {
         selectedElementParticleSystem.Stop();
         selectedElementParticleSystem.transform.parent = transform;

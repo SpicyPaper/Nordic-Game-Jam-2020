@@ -9,7 +9,10 @@ using Random = UnityEngine.Random;
 public class DayNightManager : MonoBehaviour
 {
     public delegate void StartDayEvent();
+    public delegate void StartNightEvent();
+
     public static event StartDayEvent OnStartDayEvent;
+    public static event StartNightEvent OnStartNightEvent;
 
     [Header("D/N Params")]
     public float DayDuration;
@@ -62,6 +65,8 @@ public class DayNightManager : MonoBehaviour
         currentTime = 0;
         moonLight.transform.position = defaultMoonPosition;
         moonLight.enabled = true;
+
+        OnStartNightEvent();
     }
 
     // Update is called once per frame

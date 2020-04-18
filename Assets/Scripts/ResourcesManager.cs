@@ -184,16 +184,22 @@ public class ResourcesManager : MonoBehaviour
     private void OnEnable()
     {
         DayNightManager.OnStartDayEvent += StartDay;
+        DayNightManager.OnStartNightEvent += StartNight;
     }
 
     private void OnDisable()
     {
         DayNightManager.OnStartDayEvent -= StartDay;
+        DayNightManager.OnStartNightEvent -= StartNight;
+    }
+
+    private void StartNight()
+    {
+        ResetResources();
     }
 
     private void StartDay()
     {
-        ResetResources();
         SpawnResources(resourcePlainSpawnChance, resourcePlainSpawnersParent, numberOfPlainResourcesPerDay, spawnMaxChancePlain);
         SpawnResources(resourceSnowSpawnChance, resourceSnowSpawnersParent, numberOfSnowResourcesPerDay, spawnMaxChanceSnow);
         SpawnResources(resourceMountainSpawnChance, resourceMountainSpawnersParent, numberOfMountainResourcesPerDay, spawnMaxChanceMountain);
