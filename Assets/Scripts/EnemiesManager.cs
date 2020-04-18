@@ -10,7 +10,7 @@ public class EnemiesManager : MonoBehaviour
     [SerializeField] private Transform enemieSpawnersParent;
     [SerializeField] private Transform enemiesParent;
     [SerializeField] private GameObject enemieModel;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject chest;
 
     private bool spawningEnabled;
     private int currentLevel;
@@ -75,7 +75,7 @@ public class EnemiesManager : MonoBehaviour
                     enemie.transform.localPosition = spawner.localPosition;
                     enemie.transform.localScale = Vector3.one;
 
-                    enemie.GetComponent<AIDestinationSetter>().target = player.transform;
+                    enemie.GetComponent<AIDestinationSetter>().target = chest.transform;
                 }
             }
         }

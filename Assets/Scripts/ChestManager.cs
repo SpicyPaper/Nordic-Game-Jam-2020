@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChestManager : MonoBehaviour
 {
     [SerializeField] private Transform chestSpawnersParent;
-    [SerializeField] private GameObject chestModel;
+    [SerializeField] private GameObject chest;
     [SerializeField] private GameObject player;
 
     private void Awake()
@@ -21,7 +21,6 @@ public class ChestManager : MonoBehaviour
 
         Transform spawner = availableSpawners[rand];
 
-        GameObject chest = Instantiate(chestModel);
         chest.transform.localPosition = spawner.localPosition;
         chest.transform.localScale = Vector3.one;
 
