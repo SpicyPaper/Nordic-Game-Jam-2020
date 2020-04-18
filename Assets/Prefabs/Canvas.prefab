@@ -454,6 +454,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d15d672ec2c874e8ddc0b0384a4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  grid: {fileID: 0}
+  turretPrefab: {fileID: 717483164449721675, guid: 8fe308bdb1a0af3449cdab47930e6352,
+    type: 3}
   txtTurretWood: {fileID: 1625228828606505131}
   txtTurretRock: {fileID: 1625228828762705307}
   txtTurretCrystal: {fileID: 1625228829392653836}

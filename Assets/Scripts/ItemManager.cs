@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
+    [SerializeField] private Grid grid;
+    [SerializeField] private GameObject turretPrefab;
+
     [Header("Turret")]
     [SerializeField] TextMeshProUGUI txtTurretWood;
     [SerializeField] TextMeshProUGUI txtTurretRock;
@@ -160,6 +164,20 @@ public class ItemManager : MonoBehaviour
         {
             EnableDisableItemMode();
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Vector3 position = grid.GetCellCenterWorld(grid.WorldToCell(GameObject.FindGameObjectWithTag("Player").transform.position));
+            Instantiate(turretPrefab, position, Quaternion.identity);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+
+        }
+
     }
 
     void EnableDisableItemMode()
