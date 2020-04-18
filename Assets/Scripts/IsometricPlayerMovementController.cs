@@ -32,12 +32,28 @@ public class IsometricPlayerMovementController : MonoBehaviour
     private GameObject currentProducer;
     private ParticleSystem selectedElementParticleSystem;
 
+    private int woodQuantity;
+    private int stoneQuantity;
+    private int crystalQuantity;
+
+    private float elapsedTimeCollectingRessource;
+    private static float NEEDED_TIME_COLLECT_ONE_RESSOURCE_IN_S = 1;
+
+    private float currentElapsedScaleStep;
+
+    private bool resetScaleAllowed;
+
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
         isoRenderer = GetComponentInChildren<IsometricCharacterRenderer>();
+
         selectedElementParticleSystem = Instantiate(selectedElementParticleSystemModel);
         selectedElementParticleSystem.Stop();
+
+        woodQuantity = 0;
+        stoneQuantity = 0;
+        crystalQuantity = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,11 +63,11 @@ public class IsometricPlayerMovementController : MonoBehaviour
             isAbleToCollect = true;
 
             currentProducerType = GetRessourceProducerType(collision.tag);
-            currentProducer = collision.gameObject;
+            currentProducer = collision.transform.parent.gameObject;
 
             selectedElementParticleSystem.time = 0;
             selectedElementParticleSystem.Play();
-            selectedElementParticleSystem.transform.parent = currentProducer.transform.parent;
+            selectedElementParticleSystem.transform.parent = currentProducer.transform;
             selectedElementParticleSystem.transform.localPosition = Vector3.zero + Vector3.up * 0.1f;
             selectedElementParticleSystem.transform.localScale = Vector3.one;
 
@@ -74,12 +90,60 @@ public class IsometricPlayerMovementController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                //TODO : have to be placed to false if the user move
+                if (!isRessourceCurrentlyCollected)
+                {
+                    elapsedTimeCollectingRessource = 0;
+                    currentElapsedScaleStep = 0;
+                }
+
                 isRessourceCurrentlyCollected = true;
-                CollectRessource(currentProducerType);
-                currentProducer.transform.parent.localScale = new Vector3(0.5f, 0.5f);
             }
 
+            if (isRessourceCurrentlyCollected)
+            {
+                resetScaleAllowed = true;
+                elapsedTimeCollectingRessource += Time.deltaTime;
+
+                float scalePerStep = 1f / GetQuantityRessource(currentProducerType);
+
+                float scale = Mathf.Lerp(0f, scalePerStep, Time.deltaTime);
+                currentElapsedScaleStep += scale;
+
+                currentProducer.GetComponentInChildren<Renderer>().transform.localScale -= Vector3.one * scale;
+
+                if (elapsedTimeCollectingRessource >= NEEDED_TIME_COLLECT_ONE_RESSOURCE_IN_S)
+                {
+                    if (currentProducer.GetComponentInChildren<Renderer>().transform.localScale.x > scalePerStep / 2)
+                    {
+                        elapsedTimeCollectingRessource -= NEEDED_TIME_COLLECT_ONE_RESSOURCE_IN_S;
+                        currentElapsedScaleStep = 0;
+                        CollectOneRessource(currentProducerType);
+                    }
+                }
+
+                if (currentProducer.GetComponentInChildren<Renderer>().transform.localScale.x <= 0)
+                {
+                    selectedElementParticleSystem.Stop();
+                    selectedElementParticleSystem.transform.parent = transform;
+
+                    isRessourceCurrentlyCollected = false;
+                    resetScaleAllowed = false;
+                    isAbleToCollect = false;
+
+                    CollectOneRessource(currentProducerType);
+                    Destroy(currentProducer);
+                }
+            }
+        }
+
+        if (resetScaleAllowed)
+        {
+            if (!isRessourceCurrentlyCollected)
+            {
+                resetScaleAllowed = false;
+                isRessourceCurrentlyCollected = false;
+                currentProducer.GetComponentInChildren<Renderer>().transform.localScale += Vector3.one * currentElapsedScaleStep;
+            }
         }
     }
 
@@ -95,6 +159,12 @@ public class IsometricPlayerMovementController : MonoBehaviour
         Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
         isoRenderer.SetDirection(movement);
         rbody.MovePosition(newPos);
+
+        if (inputVector.x != 0 ||
+            inputVector.y != 0)
+        {
+            isRessourceCurrentlyCollected = false;
+        }
     }
 
     private RessourceType GetRessourceType(RessourceProducerType type)
@@ -162,30 +232,60 @@ public class IsometricPlayerMovementController : MonoBehaviour
         return false;
     }
 
-    private void CollectRessource(RessourceProducerType type)
+    private int GetQuantityRessource(RessourceProducerType type)
     {
         switch (type)
         {
             case RessourceProducerType.TREE:
-                Debug.Log("5 more wood collected");
-                break;
+                return 5;
             case RessourceProducerType.BUSH:
-                Debug.Log("3 more wood collected");
-                break;
+                return 3;
             case RessourceProducerType.LITTLE_BUSH:
-                Debug.Log("1 more wood collected");
-                break;
+                return 1;
             case RessourceProducerType.STONE:
-                Debug.Log("5 more stone collected");
-                break;
+                return 5;
             case RessourceProducerType.LITTLE_STONE:
-                Debug.Log("3 more stone collected");
-                break;
+                return 3;
             case RessourceProducerType.CRYSTAL:
-                Debug.Log("5 more crystal collected");
-                break;
+                return 5;
             case RessourceProducerType.LITTLE_CRYSTAL:
-                Debug.Log("3 more crystal collected");
+                return 3;
+        }
+
+        return 0;
+    }
+
+    private void CollectAllRessource(RessourceProducerType type)
+    {
+        CollectRessource(type, GetQuantityRessource(type));
+    }
+
+    private void CollectOneRessource(RessourceProducerType type)
+    {
+        CollectRessource(type, 1);
+    }
+
+    private void CollectRessource(RessourceProducerType type, int quantity)
+    {
+        AddRessource(GetRessourceType(type), quantity);
+
+        Debug.Log(quantity + " more " + GetRessourceProducerString(type) + " collected");
+    }
+
+    private void AddRessource(RessourceType type, int quantity)
+    {
+        switch (type)
+        {
+            case RessourceType.WOOD:
+                woodQuantity += quantity;
+                break;
+            case RessourceType.STONE:
+                stoneQuantity += quantity;
+                break;
+            case RessourceType.CRYSTAL:
+                crystalQuantity += quantity;
+                break;
+            default:
                 break;
         }
     }
