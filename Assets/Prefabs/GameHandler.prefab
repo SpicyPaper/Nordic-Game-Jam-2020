@@ -43,6 +43,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e5af9ceda8ac44e8089c600c2c1a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourceSpawnersParent: {fileID: 0}
+  resourcePlainSpawnersParent: {fileID: 0}
+  resourceDesertSpawnersParent: {fileID: 0}
+  resourceMountainSpawnersParent: {fileID: 0}
+  resourceSnowSpawnersParent: {fileID: 0}
+  barelModel: {fileID: 0}
+  treeModel: {fileID: 0}
+  treeStumpModel: {fileID: 0}
+  bushModel: {fileID: 0}
+  littleBushModel: {fileID: 0}
+  crystalModel: {fileID: 0}
+  littleCrystalModel: {fileID: 0}
+  mountainStoneModel: {fileID: 0}
+  littleMountainStoneModel: {fileID: 0}
+  desertTree: {fileID: 0}
+  desertLittleStone: {fileID: 0}
+  desertStone: {fileID: 0}
+  bones1: {fileID: 0}
+  bones2: {fileID: 0}
+  bones3: {fileID: 0}
+  snowStoneModel: {fileID: 0}
+  littleSnowStoneModel: {fileID: 0}
+  snowStoneSnowOnModel: {fileID: 0}
+  littleSnowStoneSnowOnModel: {fileID: 0}
+  littleSnowStoneSnowOnLayeredModel: {fileID: 0}
+  snowTree1Model: {fileID: 0}
+  snowTree2Model: {fileID: 0}
+  snowTree3Model: {fileID: 0}
 --- !u!1 &7650486701653313884
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,15 +197,6 @@ MonoBehaviour:
   moonLight: {fileID: 7650486701653313858}
   playerLight: {fileID: 0}
   endMoonPosition: {fileID: 7650486702925728890}
-  ressourceSpawnersParent: {fileID: 0}
-  ressourcePlainSpawnersParent: {fileID: 0}
-  treeModel: {fileID: 0}
-  bushModel: {fileID: 0}
-  littleBushModel: {fileID: 0}
-  stoneModel: {fileID: 0}
-  littleStoneModel: {fileID: 0}
-  crystalModel: {fileID: 0}
-  littleCrystalModel: {fileID: 0}
 --- !u!1 &7650486702896177329
 GameObject:
   m_ObjectHideFlags: 0
