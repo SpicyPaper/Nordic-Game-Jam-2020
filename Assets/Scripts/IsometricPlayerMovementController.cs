@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class IsometricPlayerMovementController : MonoBehaviour
 {
-    private enum RessourceType
+    public enum RessourceType
     {
         WOOD,
         STONE,
         CRYSTAL
     }
 
-    private enum RessourceProducerType
+    public enum RessourceProducerType
     {
         TREE,
         BUSH,
