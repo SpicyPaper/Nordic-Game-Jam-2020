@@ -1224,6 +1224,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_Round (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 2679976464659258174, guid: 0d8e7f3fa9268ed40b2891f4edc73cc6,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679976464659258174, guid: 0d8e7f3fa9268ed40b2891f4edc73cc6,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679976464659258174, guid: 0d8e7f3fa9268ed40b2891f4edc73cc6,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5169340431650167973, guid: 0d8e7f3fa9268ed40b2891f4edc73cc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6355,6 +6370,16 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2079923369, guid: 5e2a82902b6ea4c0b9b652322ffadcff, type: 3}
+      propertyPath: SelectedElementParticleSystem
+      value: 
+      objectReference: {fileID: 4412216056876969691, guid: 417550c993682b046afcea0bb087326a,
+        type: 3}
+    - target: {fileID: 2079923369, guid: 5e2a82902b6ea4c0b9b652322ffadcff, type: 3}
+      propertyPath: selectedElementParticleSystemModel
+      value: 
+      objectReference: {fileID: 4412216056876969691, guid: 417550c993682b046afcea0bb087326a,
+        type: 3}
     - target: {fileID: 3339481645408498929, guid: 5e2a82902b6ea4c0b9b652322ffadcff,
         type: 3}
       propertyPath: m_Name

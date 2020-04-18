@@ -22,29 +22,38 @@ public class IsometricPlayerMovementController : MonoBehaviour
     }
 
     public float movementSpeed = 1f;
-    IsometricCharacterRenderer isoRenderer;
+    public ParticleSystem selectedElementParticleSystemModel;
 
-    Rigidbody2D rbody;
+    private IsometricCharacterRenderer isoRenderer;
+    private Rigidbody2D rbody;
     private bool isAbleToCollect;
     private bool isRessourceCurrentlyCollected;
     private RessourceProducerType currentProducerType;
     private GameObject currentProducer;
+    private ParticleSystem selectedElementParticleSystem;
 
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
         isoRenderer = GetComponentInChildren<IsometricCharacterRenderer>();
+        selectedElementParticleSystem = Instantiate(selectedElementParticleSystemModel);
+        selectedElementParticleSystem.Stop();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
         if (RessourceProducerContains(collision.tag))
         {
             isAbleToCollect = true;
 
             currentProducerType = GetRessourceProducerType(collision.tag);
             currentProducer = collision.gameObject;
+
+            selectedElementParticleSystem.time = 0;
+            selectedElementParticleSystem.Play();
+            selectedElementParticleSystem.transform.parent = currentProducer.transform.parent;
+            selectedElementParticleSystem.transform.localPosition = Vector3.zero + Vector3.up * 0.1f;
+            selectedElementParticleSystem.transform.localScale = Vector3.one;
 
             Debug.Log("Press E to collect ressource");
         }
@@ -54,6 +63,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
     {
         if (RessourceProducerContains(collision.tag))
         {
+            selectedElementParticleSystem.Stop();
             isAbleToCollect = false;
         }
     }
