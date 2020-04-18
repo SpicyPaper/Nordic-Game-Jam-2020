@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using Random = UnityEngine.Random;
 
 public class DayNightManager : MonoBehaviour
 {
+    public delegate void StartDayEvent();
+    public static event StartDayEvent OnStartDayEvent;
+
+    [Header("D/N Params")]
     public float DayDuration;
     public float NightDuration;
 
@@ -33,7 +39,10 @@ public class DayNightManager : MonoBehaviour
         instance = this;
         defaultMoonPosition = moonLight.transform.position;
         defaultGlobalLightIntensity = globalLight.intensity;
+    }
 
+    private void Start()
+    {
         StartDay();
     }
 
@@ -43,6 +52,8 @@ public class DayNightManager : MonoBehaviour
         moonLight.enabled = false;
         globalLight.intensity = defaultGlobalLightIntensity;
         isDay = true;
+
+        OnStartDayEvent();
     }
 
     public void StartNight()

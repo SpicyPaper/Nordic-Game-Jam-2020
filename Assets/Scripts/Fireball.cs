@@ -35,13 +35,13 @@ public class Fireball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.tag == "Monster")
+        if (collision.transform.parent.tag == "Monster")
         {
             MonsterLogic monster = collision.GetComponentInParent<MonsterLogic>();
             monster.Damage(damage);
         }
 
-        if (collision.tag != "Player" && collision.tag != "Projectile")
+        if (collision.transform.parent.tag != "Player" && collision.transform.parent.tag != "Projectile")
         {
             Destroy(gameObject);
         }
