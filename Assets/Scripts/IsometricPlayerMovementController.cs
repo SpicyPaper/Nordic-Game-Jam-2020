@@ -3,24 +3,6 @@ using UnityEngine;
 
 public class IsometricPlayerMovementController : MonoBehaviour
 {
-    public enum RessourceType
-    {
-        WOOD,
-        STONE,
-        CRYSTAL
-    }
-
-    public enum RessourceProducerType
-    {
-        TREE,
-        BUSH,
-        LITTLE_BUSH,
-        STONE,
-        LITTLE_STONE,
-        CRYSTAL,
-        LITTLE_CRYSTAL
-    }
-
     public float movementSpeed = 1f;
     public ParticleSystem selectedElementParticleSystemModel;
 
@@ -28,7 +10,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
     private Rigidbody2D rbody;
     private bool isAbleToCollect;
     private bool isRessourceCurrentlyCollected;
-    private RessourceProducerType currentProducerType;
+    private ResourcesManager.ResourceQuantityType currentResourceQuantityType;
     private GameObject currentProducer;
     private ParticleSystem selectedElementParticleSystem;
 
@@ -58,11 +40,12 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (RessourceProducerContains(collision.tag))
+        string tag = collision.transform.parent.tag;
+        if (ResourcesManager.RessourceQuantityContains(tag))
         {
             isAbleToCollect = true;
 
-            currentProducerType = GetRessourceProducerType(collision.tag);
+            currentResourceQuantityType = ResourcesManager.GetRessourceQuantityType(tag);
             currentProducer = collision.transform.parent.gameObject;
 
             selectedElementParticleSystem.time = 0;
@@ -77,7 +60,8 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (RessourceProducerContains(collision.tag))
+        string tag = collision.transform.parent.tag;
+        if (ResourcesManager.RessourceQuantityContains(tag))
         {
             selectedElementParticleSystem.Stop();
             isAbleToCollect = false;
@@ -104,7 +88,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
                 resetScaleAllowed = true;
                 elapsedTimeCollectingRessource += Time.deltaTime;
 
-                float scalePerStep = 1f / GetQuantityRessource(currentProducerType);
+                float scalePerStep = 1f / ResourcesManager.GetQuantityRessource(currentResourceQuantityType);
 
                 float scale = Mathf.Lerp(0f, scalePerStep, Time.deltaTime);
                 currentElapsedScaleStep += scale;
@@ -117,7 +101,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
                     {
                         elapsedTimeCollectingRessource -= NEEDED_TIME_COLLECT_ONE_RESSOURCE_IN_S;
                         currentElapsedScaleStep = 0;
-                        CollectOneRessource(currentProducerType);
+                        CollectOneRessource(currentResourceQuantityType);
                     }
                 }
 
@@ -130,7 +114,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
                     resetScaleAllowed = false;
                     isAbleToCollect = false;
 
-                    CollectOneRessource(currentProducerType);
+                    CollectOneRessource(currentResourceQuantityType);
                     Destroy(currentProducer);
                 }
             }
@@ -167,122 +151,34 @@ public class IsometricPlayerMovementController : MonoBehaviour
         }
     }
 
-    private RessourceType GetRessourceType(RessourceProducerType type)
+    private void CollectAllRessource(ResourcesManager.ResourceQuantityType type)
     {
-        switch (type)
-        {
-            case RessourceProducerType.TREE:
-                return RessourceType.WOOD;
-        }
-
-        return RessourceType.WOOD;
+        CollectRessource(type, ResourcesManager.GetQuantityRessource(type));
     }
 
-    private RessourceProducerType GetRessourceProducerType(string tag)
-    {
-        switch (tag)
-        {
-            case "Tree":
-                return RessourceProducerType.TREE;
-            case "Bush":
-                return RessourceProducerType.BUSH;
-            case "Little_Bush":
-                return RessourceProducerType.LITTLE_BUSH;
-            case "Stone":
-                return RessourceProducerType.STONE;
-            case "Little_Stone":
-                return RessourceProducerType.LITTLE_STONE;
-            case "Crystal":
-                return RessourceProducerType.CRYSTAL;
-            case "Little_Crystal":
-                return RessourceProducerType.LITTLE_CRYSTAL;
-        }
-
-        return RessourceProducerType.TREE;
-    }
-
-    private string GetRessourceProducerString(RessourceProducerType type)
-    {
-        switch (type)
-        {
-            case RessourceProducerType.TREE:
-                return "Tree";
-            case RessourceProducerType.BUSH:
-                return "Bush";
-            case RessourceProducerType.LITTLE_BUSH:
-                return "Little_Bush";
-            case RessourceProducerType.STONE:
-                return "Stone";
-            case RessourceProducerType.LITTLE_STONE:
-                return "Little_Stone";
-            case RessourceProducerType.CRYSTAL:
-                return "Crystal";
-            case RessourceProducerType.LITTLE_CRYSTAL:
-                return "Little_Crystal";
-        }
-
-        return "Tree";
-    }
-
-    private bool RessourceProducerContains(string value)
-    {
-        if (Enum.IsDefined(typeof(RessourceProducerType), value.ToUpper()))
-            return true;
-
-        return false;
-    }
-
-    private int GetQuantityRessource(RessourceProducerType type)
-    {
-        switch (type)
-        {
-            case RessourceProducerType.TREE:
-                return 5;
-            case RessourceProducerType.BUSH:
-                return 3;
-            case RessourceProducerType.LITTLE_BUSH:
-                return 1;
-            case RessourceProducerType.STONE:
-                return 5;
-            case RessourceProducerType.LITTLE_STONE:
-                return 3;
-            case RessourceProducerType.CRYSTAL:
-                return 5;
-            case RessourceProducerType.LITTLE_CRYSTAL:
-                return 3;
-        }
-
-        return 0;
-    }
-
-    private void CollectAllRessource(RessourceProducerType type)
-    {
-        CollectRessource(type, GetQuantityRessource(type));
-    }
-
-    private void CollectOneRessource(RessourceProducerType type)
+    private void CollectOneRessource(ResourcesManager.ResourceQuantityType type)
     {
         CollectRessource(type, 1);
     }
 
-    private void CollectRessource(RessourceProducerType type, int quantity)
+    private void CollectRessource(ResourcesManager.ResourceQuantityType type, int quantity)
     {
-        AddRessource(GetRessourceType(type), quantity);
+        AddRessource(ResourcesManager.GetRessourceType(type), quantity);
 
-        Debug.Log(quantity + " more " + GetRessourceProducerString(type) + " collected");
+        Debug.Log(quantity + " more " + ResourcesManager.GetRessourceString(type) + " collected");
     }
 
-    private void AddRessource(RessourceType type, int quantity)
+    private void AddRessource(ResourcesManager.ResourceType type, int quantity)
     {
         switch (type)
         {
-            case RessourceType.WOOD:
+            case ResourcesManager.ResourceType.WOOD:
                 woodQuantity += quantity;
                 break;
-            case RessourceType.STONE:
+            case ResourcesManager.ResourceType.STONE:
                 stoneQuantity += quantity;
                 break;
-            case RessourceType.CRYSTAL:
+            case ResourcesManager.ResourceType.CRYSTAL:
                 crystalQuantity += quantity;
                 break;
             default:

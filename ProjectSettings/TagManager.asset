@@ -4,13 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Tree
-  - Bush
-  - Stone
-  - Little_Stone
-  - Little_Bush
-  - Crystal
-  - Little_Crystal
+  - Big_Wood
+  - Medium_Wood
+  - Small_Wood
+  - Big_Stone
+  - Medium_Stone
+  - Small_Stone
+  - Big_Crystal
+  - Medium_Crystal
+  - Small_Crystal
   layers:
   - Default
   - TransparentFX
