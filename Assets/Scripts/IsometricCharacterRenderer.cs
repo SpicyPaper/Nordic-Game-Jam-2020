@@ -18,6 +18,29 @@ public class IsometricCharacterRenderer : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public Vector2 GetDirection()
+    {
+        switch(lastDirection)
+        {
+            case 0:
+                return Vector2.up;
+            case 1:
+                return new Vector2(-1, 1).normalized;
+            case 2:
+                return Vector2.left;
+            case 3:
+                return new Vector2(-1, -1).normalized;
+            case 4:
+                return Vector2.down;
+            case 5:
+                return new Vector2(1, -1).normalized;
+            case 6:
+                return Vector2.right;
+            case 7:
+                return new Vector2(1, 1);
+        }
+        return Vector2.up;
+    }
 
     public void SetDirection(Vector2 direction){
 

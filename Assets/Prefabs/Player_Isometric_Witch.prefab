@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 2079923369}
   m_Layer: 0
   m_Name: Player_Isometric_Witch
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -272,7 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0038be263d74d9b95eb7a5862c9f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 2
+  selectedElementParticleSystemModel: {fileID: 4412216056876969691, guid: 417550c993682b046afcea0bb087326a,
+    type: 3}
+  FireballPrefab: {fileID: 8373692753757376659, guid: aedbb2ec2a486674aaf43bc7ca007218,
+    type: 3}
 --- !u!1 &4239324792881426523
 GameObject:
   m_ObjectHideFlags: 0

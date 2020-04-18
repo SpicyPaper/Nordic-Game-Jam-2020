@@ -25,6 +25,10 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     private bool resetScaleAllowed;
 
+    public GameObject FireballPrefab;
+
+    public float PlayerDamage = 5f;
+
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -80,6 +84,11 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ShootFireball(isoRenderer.GetDirection());
+        }
+
         if (isAbleToCollect && currentProducer != null)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -139,6 +148,14 @@ public class IsometricPlayerMovementController : MonoBehaviour
                 currentProducer.GetComponentInChildren<Renderer>().transform.localScale += Vector3.one * currentElapsedScaleStep;
             }
         }
+        
+    }
+
+    private void ShootFireball(Vector2 direction)
+    {
+        var fireball = Instantiate(FireballPrefab, transform.position, Quaternion.identity).GetComponent<Fireball>();
+        fireball.SetDirection(direction);
+        fireball.SetDamage(PlayerDamage);
     }
 
     // Update is called once per frame
