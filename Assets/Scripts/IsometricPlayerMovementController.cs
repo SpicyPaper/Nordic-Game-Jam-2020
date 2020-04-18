@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class IsometricPlayerMovementController : MonoBehaviour
@@ -29,6 +30,14 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     public float PlayerDamage = 5f;
 
+    [SerializeField] private TextMeshProUGUI txtWoodQuantity;
+    [SerializeField] private TextMeshProUGUI txtStoneQuantity;
+    [SerializeField] private TextMeshProUGUI txtCrystalQuantity;
+
+    public int WoodQuantity { get => woodQuantity; set { woodQuantity = value; txtWoodQuantity.text = value.ToString(); } }
+    public int StoneQuantity { get => stoneQuantity; set { stoneQuantity = value; txtStoneQuantity.text = value.ToString(); } }
+    public int CrystalQuantity { get => crystalQuantity; set { crystalQuantity = value; txtCrystalQuantity.text = value.ToString(); } }
+
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -37,9 +46,9 @@ public class IsometricPlayerMovementController : MonoBehaviour
         selectedElementParticleSystem = Instantiate(selectedElementParticleSystemModel);
         selectedElementParticleSystem.Stop();
 
-        woodQuantity = 0;
-        stoneQuantity = 0;
-        crystalQuantity = 0;
+        WoodQuantity = 0;
+        StoneQuantity = 0;
+        CrystalQuantity = 0;
     }
 
     private void OnEnable()
@@ -210,13 +219,13 @@ public class IsometricPlayerMovementController : MonoBehaviour
         switch (type)
         {
             case ResourcesManager.ResourceType.WOOD:
-                woodQuantity += quantity;
+                WoodQuantity += quantity;
                 break;
             case ResourcesManager.ResourceType.STONE:
-                stoneQuantity += quantity;
+                StoneQuantity += quantity;
                 break;
             case ResourcesManager.ResourceType.CRYSTAL:
-                crystalQuantity += quantity;
+                CrystalQuantity += quantity;
                 break;
             default:
                 break;
