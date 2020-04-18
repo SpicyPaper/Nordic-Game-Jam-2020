@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pathfinding;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class EnemiesManager : MonoBehaviour
     [SerializeField] private Transform enemieSpawnersParent;
     [SerializeField] private Transform enemiesParent;
     [SerializeField] private GameObject enemieModel;
+    [SerializeField] private GameObject player;
 
     private bool spawningEnabled;
     private int currentLevel;
@@ -72,6 +74,8 @@ public class EnemiesManager : MonoBehaviour
                     enemie.transform.parent = enemiesParent;
                     enemie.transform.localPosition = spawner.localPosition;
                     enemie.transform.localScale = Vector3.one;
+
+                    enemie.GetComponent<AIDestinationSetter>().target = player.transform;
                 }
             }
         }
