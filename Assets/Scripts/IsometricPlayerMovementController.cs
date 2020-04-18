@@ -38,6 +38,16 @@ public class IsometricPlayerMovementController : MonoBehaviour
         crystalQuantity = 0;
     }
 
+    private void OnEnable()
+    {
+        DayNightManager.OnStartDayEvent += StartDay;
+    }
+
+    private void OnDisable()
+    {
+        DayNightManager.OnStartDayEvent -= StartDay;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.transform.parent.tag;
@@ -70,7 +80,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     private void Update()
     {
-        if (isAbleToCollect)
+        if (isAbleToCollect && currentProducer != null)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -149,6 +159,12 @@ public class IsometricPlayerMovementController : MonoBehaviour
         {
             isRessourceCurrentlyCollected = false;
         }
+    }
+
+    private void StartDay()
+    {
+        selectedElementParticleSystem.Stop();
+        selectedElementParticleSystem.transform.parent = transform;
     }
 
     private void CollectAllRessource(ResourcesManager.ResourceQuantityType type)
