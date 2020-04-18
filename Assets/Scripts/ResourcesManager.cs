@@ -196,8 +196,8 @@ public class ResourcesManager : MonoBehaviour
         ResetResources();
         SpawnResources(resourcePlainSpawnChance, resourcePlainSpawnersParent, numberOfPlainResourcesPerDay, spawnMaxChancePlain);
         SpawnResources(resourceSnowSpawnChance, resourceSnowSpawnersParent, numberOfSnowResourcesPerDay, spawnMaxChanceSnow);
-        //SpawnResources(resourceMountainSpawnChance, resourceMountainSpawnersParent);
-        //SpawnResources(resourceDesertSpawnChance, resourceDesertSpawnersParent);
+        SpawnResources(resourceMountainSpawnChance, resourceMountainSpawnersParent, numberOfMountainResourcesPerDay, spawnMaxChanceMountain);
+        SpawnResources(resourceDesertSpawnChance, resourceDesertSpawnersParent, numberOfDesertResourcesPerDay, spawnMaxChanceDesert);
     }
 
     private void ResetResources()
