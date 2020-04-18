@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tree
+  - Bush
+  - Stone
+  - Little_Stone
+  - Little_Bush
+  - Crystal
+  - Little_Crystal
   layers:
   - Default
   - TransparentFX

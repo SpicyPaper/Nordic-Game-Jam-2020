@@ -46,7 +46,7 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
-  - m_Neighbors: 0000000002000000000000000100000001000000000000000100000000000000
+  - m_Neighbors: 0000000002000000000000000100000001000000000000000000000000000000
     m_Sprites:
     - {fileID: 21300000, guid: 853bbc06cd790934d87be5a6bddecd37, type: 3}
     m_GameObject: {fileID: 0}
