@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ee2ae6b19edcf4ab873976fa33b9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DayDuration: 300
+  DayDuration: 5
   NightDuration: 300
   DarkStart: 0.5
   NightIntensity: 0.5
@@ -461,6 +461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e8b97babb1c7d48abcf08cf1521be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChestHealthRect: {fileID: 0}
+  ChestHealth: 100
 --- !u!1001 &3180397616648596553
 PrefabInstance:
   m_ObjectHideFlags: 0
