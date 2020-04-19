@@ -64,5 +64,4 @@ public class GameHandler : MonoBehaviour
 
         OnPauseResumeGameEvent(currentGameState == GameState.PAUSE);
     }
-
 }
