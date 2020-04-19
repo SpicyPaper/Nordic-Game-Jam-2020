@@ -93,6 +93,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
         {
             selectedElementParticleSystem.Stop();
             isAbleToCollect = false;
+            isRessourceCurrentlyCollected = false;
         }
     }
 
@@ -158,6 +159,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
                     isRessourceCurrentlyCollected = false;
                     resetScaleAllowed = false;
                     isAbleToCollect = false;
+                    isRessourceCurrentlyCollected = false;
 
                     CollectOneRessource(currentResourceQuantityType);
                     Destroy(currentProducer);
@@ -207,12 +209,6 @@ public class IsometricPlayerMovementController : MonoBehaviour
         Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
         isoRenderer.SetDirection(movement);
         rbody.MovePosition(newPos);
-
-        if (inputVector.x != 0 ||
-            inputVector.y != 0)
-        {
-            isRessourceCurrentlyCollected = false;
-        }
     }
 
     private void StartNight()
