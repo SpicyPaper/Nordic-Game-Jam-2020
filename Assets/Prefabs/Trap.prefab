@@ -66,7 +66,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 2130146985
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: -1
 --- !u!114 &553215712059243742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4534753709223742112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.01, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3499913486287100223}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 6618302460770313026}
   m_Layer: 0
   m_Name: TrapCollider
-  m_TagString: Untagged
+  m_TagString: CraftAvoider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,7 +218,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.6765072, y: -0.07649872}
-      - {x: 0.030245509, y: -0.56756806}
-      - {x: 0.6849782, y: -0.08023759}
-      - {x: -0.007076023, y: 0.38386703}
+    - - {x: -0.49369642, y: -0.0017125113}
+      - {x: -0.016842103, y: -0.293352}
+      - {x: 0.54648507, y: 0.008397924}
+      - {x: 0.016029947, y: 0.28728205}
