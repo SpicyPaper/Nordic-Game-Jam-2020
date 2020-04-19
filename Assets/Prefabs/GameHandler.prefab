@@ -303,8 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ee2ae6b19edcf4ab873976fa33b9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DayDuration: 5
-  NightDuration: 20
+  DayDuration: 300
+  NightDuration: 300
   DarkStart: 0.5
   NightIntensity: 0.5
   globalLight: {fileID: 7650486702896177335}

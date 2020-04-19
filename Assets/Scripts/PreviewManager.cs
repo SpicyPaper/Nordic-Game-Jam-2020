@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PreviewManager : MonoBehaviour
@@ -8,18 +7,22 @@ public class PreviewManager : MonoBehaviour
     {
         get
         {
-            return numberOfCollision == 0;
+            return collidersInCollision.Count == 0;
         }
     }
 
-    private static int numberOfCollision = 0;
+    private static List<Collider2D> collidersInCollision;
+
+    private void Awake()
+    {
+        collidersInCollision = new List<Collider2D>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "CraftAvoider")
         {
-            print("+ " + numberOfCollision);
-            numberOfCollision++;
+            collidersInCollision.Add(collision);
         }
     }
 
@@ -27,8 +30,18 @@ public class PreviewManager : MonoBehaviour
     {
         if (collision.tag == "CraftAvoider")
         {
-            print("- " + numberOfCollision);
-            numberOfCollision--;
+            collidersInCollision.Remove(collision);
+        }
+    }
+
+    private void Update()
+    {
+        for (int i = collidersInCollision.Count - 1; i >= 0; i--)
+        {
+            if (collidersInCollision[i] == null)
+            {
+                collidersInCollision.RemoveAt(i);
+            }
         }
     }
 }
