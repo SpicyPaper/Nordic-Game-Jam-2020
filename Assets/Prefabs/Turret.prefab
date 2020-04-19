@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3499913486287100223}
   - component: {fileID: 2301394218351072377}
   - component: {fileID: 666846908175964556}
-  m_Layer: 8
+  - component: {fileID: 5288321792321913155}
+  m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +42,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717483164449721675}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -65,6 +66,22 @@ SortingGroup:
   m_SortingLayerID: 2130146985
   m_SortingLayer: 1
   m_SortingOrder: 0
+--- !u!114 &5288321792321913155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717483164449721675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce462efd6219e9a4d9d3c0720b99b195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurretDamage: 20
+  attackSpeed: 0.5
+  projectilePrefab: {fileID: 8373692753757376659, guid: 14f5a2826209972469aeb35c55e7fd5d,
+    type: 3}
 --- !u!1 &1470249728815787222
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,8 +91,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3162683712439386022}
-  m_Layer: 8
-  m_Name: GameObject
+  - component: {fileID: 4722423221018670918}
+  m_Layer: 0
+  m_Name: EnemyDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,6 +115,22 @@ Transform:
   m_Father: {fileID: 3499913486287100223}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &4722423221018670918
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470249728815787222}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 7.2855077
 --- !u!1 &4534753709223742112
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6096696299163189752}
   - component: {fileID: 3808212465680682686}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TurretRender
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -41,7 +41,7 @@ public class Fireball : MonoBehaviour
             monster.Damage(damage);
         }
 
-        if (collision.transform.parent.tag != "Player" && collision.transform.parent.tag != "Projectile")
+        if (collision.transform.parent.tag != "Player" && collision.transform.parent.tag != "Projectile" && collision.transform.parent.tag != "Turret")
         {
             Destroy(gameObject);
         }

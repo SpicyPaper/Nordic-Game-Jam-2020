@@ -8,6 +8,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Grid grid;
     [SerializeField] private GameObject turretPrefab;
+    [SerializeField] private GameObject wallPrefab;
 
     [Header("Turret")]
     [SerializeField] TextMeshProUGUI txtTurretWood;
@@ -168,12 +169,13 @@ public class ItemManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Vector3 position = grid.GetCellCenterWorld(grid.WorldToCell(GameObject.FindGameObjectWithTag("Player").transform.position));
+            Vector3 position = grid.GetCellCenterWorld(grid.WorldToCell(player.transform.position));
             Instantiate(turretPrefab, position, Quaternion.identity);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-
+            Vector3 position = grid.GetCellCenterWorld(grid.WorldToCell(player.transform.position));
+            Instantiate(wallPrefab, position, Quaternion.identity);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
