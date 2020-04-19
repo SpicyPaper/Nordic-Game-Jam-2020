@@ -111,8 +111,8 @@ public class ResourcesManager : MonoBehaviour
         resourcePlainSpawnChance.Add(ResourceProducerType.PLAIN_LITTLE_BUSH, new Tuple<float, float, float>(50, 0, 0));
         resourcePlainSpawnChance.Add(ResourceProducerType.PLAIN_TREE, new Tuple<float, float, float>(100, 0, 0));
         resourcePlainSpawnChance.Add(ResourceProducerType.PLAIN_TREE_STUMP, new Tuple<float, float, float>(20, 0, 0));
-        resourcePlainSpawnChance.Add(ResourceProducerType.MOUNTAIN_CRYSTAL, new Tuple<float, float, float>(10, 0, 0));
-        resourcePlainSpawnChance.Add(ResourceProducerType.MOUNTAIN_LITTLE_CRYTAL, new Tuple<float, float, float>(10, 0, 0));
+        resourcePlainSpawnChance.Add(ResourceProducerType.MOUNTAIN_CRYSTAL, new Tuple<float, float, float>(5, 0, 0));
+        resourcePlainSpawnChance.Add(ResourceProducerType.MOUNTAIN_LITTLE_CRYTAL, new Tuple<float, float, float>(5, 0, 0));
 
         resourceSnowSpawnChance = new Dictionary<ResourceProducerType, Tuple<float, float, float>>();
         resourceSnowSpawnChance.Add(ResourceProducerType.SNOW_LITTLE_STONE, new Tuple<float, float, float>(50, 0, 0));
@@ -123,15 +123,15 @@ public class ResourcesManager : MonoBehaviour
         resourceSnowSpawnChance.Add(ResourceProducerType.SNOW_TREE_1, new Tuple<float, float, float>(10, 0, 0));
         resourceSnowSpawnChance.Add(ResourceProducerType.SNOW_TREE_2, new Tuple<float, float, float>(10, 0, 0));
         resourceSnowSpawnChance.Add(ResourceProducerType.SNOW_TREE_3, new Tuple<float, float, float>(10, 0, 0));
-        resourceSnowSpawnChance.Add(ResourceProducerType.MOUNTAIN_CRYSTAL, new Tuple<float, float, float>(10, 0, 0));
-        resourceSnowSpawnChance.Add(ResourceProducerType.MOUNTAIN_LITTLE_CRYTAL, new Tuple<float, float, float>(10, 0, 0));
+        resourceSnowSpawnChance.Add(ResourceProducerType.MOUNTAIN_CRYSTAL, new Tuple<float, float, float>(5, 0, 0));
+        resourceSnowSpawnChance.Add(ResourceProducerType.MOUNTAIN_LITTLE_CRYTAL, new Tuple<float, float, float>(5, 0, 0));
 
         resourceMountainSpawnChance = new Dictionary<ResourceProducerType, Tuple<float, float, float>>();
         resourceMountainSpawnChance.Add(ResourceProducerType.MOUNTAIN_CRYSTAL, new Tuple<float, float, float>(20, 0, 0));
         resourceMountainSpawnChance.Add(ResourceProducerType.MOUNTAIN_LITTLE_CRYTAL, new Tuple<float, float, float>(50, 0, 0));
         resourceMountainSpawnChance.Add(ResourceProducerType.MOUNTAIN_STONE, new Tuple<float, float, float>(50, 0, 0));
         resourceMountainSpawnChance.Add(ResourceProducerType.MOUTAIN_LITTLE_STONE, new Tuple<float, float, float>(50, 0, 0));
-        resourceMountainSpawnChance.Add(ResourceProducerType.PLAIN_BARREL, new Tuple<float, float, float>(10, 0, 0));
+        resourceMountainSpawnChance.Add(ResourceProducerType.PLAIN_BARREL, new Tuple<float, float, float>(5, 0, 0));
 
         resourceDesertSpawnChance = new Dictionary<ResourceProducerType, Tuple<float, float, float>>();
         resourceDesertSpawnChance.Add(ResourceProducerType.DESERT_BONES_1, new Tuple<float, float, float>(5, 0, 0));
@@ -139,9 +139,9 @@ public class ResourcesManager : MonoBehaviour
         resourceDesertSpawnChance.Add(ResourceProducerType.DESERT_BONES_3, new Tuple<float, float, float>(5, 0, 0));
         resourceDesertSpawnChance.Add(ResourceProducerType.DESERT_LITTLE_STONE, new Tuple<float, float, float>(50, 0, 0));
         resourceDesertSpawnChance.Add(ResourceProducerType.DESERT_STONE, new Tuple<float, float, float>(20, 0, 0));
-        resourceDesertSpawnChance.Add(ResourceProducerType.DESERT_TREE, new Tuple<float, float, float>(5, 0, 0));
-        resourceDesertSpawnChance.Add(ResourceProducerType.MOUNTAIN_CRYSTAL, new Tuple<float, float, float>(10, 0, 0));
-        resourceDesertSpawnChance.Add(ResourceProducerType.MOUNTAIN_LITTLE_CRYTAL, new Tuple<float, float, float>(10, 0, 0));
+        resourceDesertSpawnChance.Add(ResourceProducerType.DESERT_TREE, new Tuple<float, float, float>(50, 0, 0));
+        resourceDesertSpawnChance.Add(ResourceProducerType.MOUNTAIN_CRYSTAL, new Tuple<float, float, float>(5, 0, 0));
+        resourceDesertSpawnChance.Add(ResourceProducerType.MOUNTAIN_LITTLE_CRYTAL, new Tuple<float, float, float>(5, 0, 0));
 
         float minValue = 0;
         spawnMaxChancePlain = 0;

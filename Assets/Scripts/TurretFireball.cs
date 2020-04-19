@@ -42,6 +42,10 @@ public class TurretFireball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.transform.parent == null)
+        {
+            return;
+        }
 
         if (collision.transform.parent.tag == "Monster")
         {

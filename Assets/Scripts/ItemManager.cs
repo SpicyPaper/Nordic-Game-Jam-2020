@@ -139,7 +139,7 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    private bool isInItemMod;
+    public static bool IsInItemMod;
 
 
     // Start is called before the first frame update
@@ -158,7 +158,7 @@ public class ItemManager : MonoBehaviour
         TrapCrystalPrice = 10;
 
         initPos = transform.localPosition;
-        isInItemMod = true;
+        IsInItemMod = true;
         EnableDisableItemMode();
     }
 
@@ -170,7 +170,7 @@ public class ItemManager : MonoBehaviour
             EnableDisableItemMode();
         }
 
-        if (isInItemMod)
+        if (IsInItemMod)
         {
             Vector3 position = grid.GetCellCenterWorld(grid.WorldToCell(player.GetComponent<IsometricPlayerMovementController>().GetPlayerFront()));
             preview.transform.position = position;
@@ -190,6 +190,16 @@ public class ItemManager : MonoBehaviour
                     SpawnIfMoney(TrapWoodPrice, TrapRockPrice, TrapCrystalPrice, position, trapPrefab);
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                print("OK1");
+                if (PreviewManager.CurrentCollidingItem != null)
+                {
+                    print("OK2");
+                    Destroy(PreviewManager.CurrentCollidingItem);
+                }
+            }
         }
     }
 
@@ -207,8 +217,8 @@ public class ItemManager : MonoBehaviour
 
     void EnableDisableItemMode()
     {
-        isInItemMod = !isInItemMod;
-        if (isInItemMod)
+        IsInItemMod = !IsInItemMod;
+        if (IsInItemMod)
         {
             transform.localPosition = initPos;
         }
@@ -216,6 +226,6 @@ public class ItemManager : MonoBehaviour
         {
             transform.localPosition += Vector3.down * 180;
         }
-        preview.SetActive(isInItemMod);
+        preview.SetActive(IsInItemMod);
     }
 }

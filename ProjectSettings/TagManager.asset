@@ -18,6 +18,7 @@ TagManager:
   - Turret
   - CraftAvoider
   - Chest
+  - Trap
   layers:
   - Default
   - TransparentFX

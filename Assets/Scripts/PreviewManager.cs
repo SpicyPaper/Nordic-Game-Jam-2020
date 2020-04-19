@@ -13,6 +13,8 @@ public class PreviewManager : MonoBehaviour
 
     private static List<Collider2D> collidersInCollision;
 
+    public static GameObject CurrentCollidingItem = null;
+
     private void Awake()
     {
         collidersInCollision = new List<Collider2D>();
@@ -24,6 +26,15 @@ public class PreviewManager : MonoBehaviour
         {
             collidersInCollision.Add(collision);
         }
+
+        if (collision.transform.parent != null)
+        {
+            if (collision.transform.parent.tag == "Turret" || collision.transform.parent.tag == "Trap")
+            {
+                print("OK");
+                CurrentCollidingItem = collision.transform.parent.gameObject;
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -31,6 +42,15 @@ public class PreviewManager : MonoBehaviour
         if (collision.tag == "CraftAvoider")
         {
             collidersInCollision.Remove(collision);
+        }
+
+        if (collision.transform.parent != null)
+        {
+            if (collision.transform.parent.tag == "Turret" || collision.transform.parent.tag == "Trap")
+            {
+                print("OKD");
+                CurrentCollidingItem = null;
+            }
         }
     }
 

@@ -24,7 +24,7 @@ public class EnemiesManager : MonoBehaviour
     private float maxNumberOfEnemies = 30;
 
     private float intervalDivisor = 1.5f;
-    private float numberOfEnemiesMult = 1.5f;
+    private float numberOfEnemiesMult = 1.4f;
 
     private void Awake()
     {
@@ -88,6 +88,16 @@ public class EnemiesManager : MonoBehaviour
         CurrentLevel++;
         currentInterval /= intervalDivisor;
         currentNumberOfEnemies *= numberOfEnemiesMult;
+
+        if (currentInterval >= maxInterval)
+        {
+            currentInterval = maxInterval;
+        }
+
+        if (currentNumberOfEnemies >= maxNumberOfEnemies)
+        {
+            currentNumberOfEnemies = maxNumberOfEnemies;
+        }
 
         print(currentInterval + " " + currentNumberOfEnemies);
     }

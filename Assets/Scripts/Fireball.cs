@@ -5,6 +5,7 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     public float speed = 2f;
+    public float destructionTime = 3f;
     private Rigidbody2D rb;
 
     private Vector2 velocity;
@@ -14,12 +15,19 @@ public class Fireball : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(DestroyAfterTime());
     }
 
     // Update is called once per frame
     void Update()
     {
         rb.velocity = velocity;
+    }
+
+    IEnumerator DestroyAfterTime()
+    {
+        yield return new WaitForSeconds(destructionTime);
+        Destroy(gameObject);
     }
 
     public void SetDirection(Vector2 direction)
@@ -34,15 +42,16 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.transform.parent == null)
+        {
+            return;
+        }
 
         if (collision.transform.parent.tag == "Monster")
         {
             MonsterLogic monster = collision.GetComponentInParent<MonsterLogic>();
             monster.Damage(damage);
-        }
 
-        if (collision.transform.parent.tag != "Player" && collision.transform.parent.tag != "Projectile" && collision.transform.parent.tag != "Turret")
-        {
             Destroy(gameObject);
         }
     }

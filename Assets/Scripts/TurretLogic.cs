@@ -47,6 +47,11 @@ public class TurretLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.transform.parent == null)
+        {
+            return;
+        }
+
         if (collision.transform.parent.tag == "Monster")
         {
             enemies.Add(collision.transform.parent.gameObject);
@@ -55,6 +60,11 @@ public class TurretLogic : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.transform.parent == null)
+        {
+            return;
+        }
+
         if (collision.transform.parent.tag == "Monster")
         {
             enemies.Remove(collision.transform.parent.gameObject);
