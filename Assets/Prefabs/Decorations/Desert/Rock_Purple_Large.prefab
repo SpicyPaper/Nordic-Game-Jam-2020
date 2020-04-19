@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6024432824148281563}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CraftAvoider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6024432824148281565}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.047, z: 0}
+  m_LocalPosition: {x: 0, y: -0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6024432824983170949}
@@ -137,14 +137,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.14275372, y: 0.39470655}
-      - {x: -0.10162246, y: 0.40532094}
-      - {x: -0.33755863, y: 0.3014906}
-      - {x: -0.3901614, y: 0.027026951}
+    - - {x: 0.13288641, y: 0.26396534}
+      - {x: -0.047352314, y: 0.26471248}
+      - {x: -0.17228198, y: 0.22501937}
+      - {x: -0.23475194, y: -0.009975284}
       - {x: -0.092803836, y: -0.12634248}
       - {x: 0.11991131, y: -0.11955708}
-      - {x: 0.4082166, y: 0.031134903}
-      - {x: 0.38272583, y: 0.3014887}
+      - {x: 0.26514125, y: -0.00833413}
+      - {x: 0.2421174, y: 0.15841338}
 --- !u!1 &6024432824983170950
 GameObject:
   m_ObjectHideFlags: 0

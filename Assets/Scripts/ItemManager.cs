@@ -169,22 +169,26 @@ public class ItemManager : MonoBehaviour
         {
             EnableDisableItemMode();
         }
+
         if (isInItemMod)
         {
             Vector3 position = grid.GetCellCenterWorld(grid.WorldToCell(player.GetComponent<IsometricPlayerMovementController>().GetPlayerFront()));
             preview.transform.position = position;
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (PreviewManager.IsCraftingAllowed)
             {
-                Instantiate(turretPrefab, position, Quaternion.identity);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                Instantiate(wallPrefab, position, Quaternion.identity);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    Instantiate(turretPrefab, position, Quaternion.identity);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    Instantiate(wallPrefab, position, Quaternion.identity);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 Instantiate(trapPrefab, position, Quaternion.identity);
+                }
             }
         }
     }
@@ -202,7 +206,4 @@ public class ItemManager : MonoBehaviour
         }
         preview.SetActive(isInItemMod);
     }
-
-
-    
 }

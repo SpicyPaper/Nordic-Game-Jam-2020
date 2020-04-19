@@ -16,6 +16,7 @@ TagManager:
   - Projectile
   - Monster
   - Turret
+  - CraftAvoider
   - Chest
   layers:
   - Default

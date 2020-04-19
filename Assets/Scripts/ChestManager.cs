@@ -17,7 +17,6 @@ public class ChestManager : MonoBehaviour
         }
 
         int rand = Random.Range(0, availableSpawners.Count - 1);
-        print(rand);
 
         Transform spawner = availableSpawners[rand];
 
