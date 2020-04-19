@@ -38,6 +38,8 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     private bool canAttack = true;
 
+    private bool isPaused;
+
     [SerializeField] private TextMeshProUGUI txtWoodQuantity;
     [SerializeField] private TextMeshProUGUI txtStoneQuantity;
     [SerializeField] private TextMeshProUGUI txtCrystalQuantity;
@@ -57,16 +59,24 @@ public class IsometricPlayerMovementController : MonoBehaviour
         WoodQuantity = 0;
         StoneQuantity = 0;
         CrystalQuantity = 0;
+        isPaused = false;
     }
 
     private void OnEnable()
     {
         DayNightManager.OnStartNightEvent += StartNight;
+        GameHandler.OnPauseResumeGameEvent += Pause;
     }
 
     private void OnDisable()
     {
         DayNightManager.OnStartNightEvent -= StartNight;
+        GameHandler.OnPauseResumeGameEvent -= Pause;
+    }
+
+    private void Pause(bool value)
+    {
+        isPaused = value;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -204,15 +214,18 @@ public class IsometricPlayerMovementController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 currentPos = rbody.position;
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
-        inputVector = Vector2.ClampMagnitude(inputVector, 1);
-        Vector2 movement = inputVector * movementSpeed;
-        Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
-        isoRenderer.SetDirection(movement);
-        rbody.MovePosition(newPos);
+        if (!isPaused)
+        {
+            Vector2 currentPos = rbody.position;
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
+            inputVector = Vector2.ClampMagnitude(inputVector, 1);
+            Vector2 movement = inputVector * movementSpeed;
+            Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
+            isoRenderer.SetDirection(movement);
+            rbody.MovePosition(newPos);
+        }
     }
 
     private void StartNight()

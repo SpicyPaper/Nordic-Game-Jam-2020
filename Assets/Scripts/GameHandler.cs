@@ -7,6 +7,8 @@ public class GameHandler : MonoBehaviour
     public delegate void PauseResumeGameEvent(bool isPaused);
     public static event PauseResumeGameEvent OnPauseResumeGameEvent;
 
+    [SerializeField] private Canvas inGameCanvas;
+
     public enum GameState
     {
         PLAY,
@@ -19,6 +21,16 @@ public class GameHandler : MonoBehaviour
     void Start()
     {
         currentGameState = GameState.PLAY;
+    }
+
+    private void OnEnable()
+    {
+        InGameMenuManager.OnResumeGameEvent += ResumeOrPauseGame;
+    }
+
+    private void OnDisable()
+    {
+        InGameMenuManager.OnResumeGameEvent -= ResumeOrPauseGame;
     }
 
     // Update is called once per frame
@@ -40,10 +52,14 @@ public class GameHandler : MonoBehaviour
         if (currentGameState == GameState.PLAY)
         {
             currentGameState = GameState.PAUSE;
+
+            inGameCanvas.gameObject.SetActive(true);
         }
         else if (currentGameState == GameState.PAUSE)
         {
             currentGameState = GameState.PLAY;
+
+            inGameCanvas.gameObject.SetActive(false);
         }
 
         OnPauseResumeGameEvent(currentGameState == GameState.PAUSE);
