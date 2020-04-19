@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7568707387570122178}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CraftAvoider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199434858203942752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.32, z: 0}
+  m_LocalPosition: {x: 0.002, y: 0.222, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5775493782413798540}
@@ -56,15 +56,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.32401425, y: -0.06888217}
-      - {x: 0.04185766, y: 0.029853642}
-      - {x: -0.13796169, y: -0.02124232}
-      - {x: -0.43226105, y: -0.244201}
-      - {x: -0.22126627, y: -0.32355756}
-      - {x: 0.005094588, y: -0.3641377}
-      - {x: 0.31896967, y: -0.29338843}
-      - {x: 0.41827267, y: -0.24269062}
---- !u!1 &8276612974074905785
+    - - {x: 0.3191183, y: -0.046850085}
+      - {x: 0.03696171, y: -0.0068662167}
+      - {x: -0.27749756, y: -0.043274164}
+      - {x: -0.37106112, y: -0.22706497}
+      - {x: -0.10376247, y: -0.4116854}
+      - {x: 0.054054532, y: -0.41554564}
+      - {x: 0.26511374, y: -0.29583645}
+      - {x: 0.37176076, y: -0.1570108}
+--- !u!1 &3797148197188767247
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,38 +72,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5775493782413798540}
-  - component: {fileID: 6206175056185357687}
-  - component: {fileID: 299487023084306759}
+  - component: {fileID: 959656679098130013}
+  - component: {fileID: 611383185788228905}
   m_Layer: 0
-  m_Name: Rock_2
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5775493782413798540
+--- !u!4 &959656679098130013
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8276612974074905785}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.971, y: 1.105, z: 0}
+  m_GameObject: {fileID: 3797148197188767247}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6831290280436283489}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Children: []
+  m_Father: {fileID: 5775493782413798540}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6206175056185357687
+--- !u!212 &611383185788228905
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8276612974074905785}
+  m_GameObject: {fileID: 3797148197188767247}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -147,6 +145,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1 &8276612974074905785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5775493782413798540}
+  - component: {fileID: 299487023084306759}
+  m_Layer: 0
+  m_Name: Rock_2
+  m_TagString: Big_Stone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5775493782413798540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8276612974074905785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.971, y: 1.105, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6831290280436283489}
+  - {fileID: 959656679098130013}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &299487023084306759
 SortingGroup:
   m_ObjectHideFlags: 0

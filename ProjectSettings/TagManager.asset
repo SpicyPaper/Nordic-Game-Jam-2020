@@ -3,7 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Big_Wood
+  - Medium_Wood
+  - Small_Wood
+  - Big_Stone
+  - Medium_Stone
+  - Small_Stone
+  - Big_Crystal
+  - Medium_Crystal
+  - Small_Crystal
+  - Projectile
+  - Monster
+  - Turret
+  - CraftAvoider
+  - Chest
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -13,7 +28,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Obstacle
   - 
   - 
   - 
