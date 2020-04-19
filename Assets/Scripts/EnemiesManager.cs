@@ -23,8 +23,8 @@ public class EnemiesManager : MonoBehaviour
     private float maxInterval = 1;
     private float maxNumberOfEnemies = 30;
 
-    private float intervalDivisor = 1.5f;
-    private float numberOfEnemiesMult = 1.4f;
+    private float intervalDivisor = 1.25f;
+    private float numberOfEnemiesMult = 1.1f;
 
     private void Awake()
     {
