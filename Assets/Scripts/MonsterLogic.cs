@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterLogic : MonoBehaviour
 {
     public float MaxHealth = 50;
+
+    public float AttackDamage = 10f;
 
     private HealthBar healthbar;
 
@@ -35,6 +38,14 @@ public class MonsterLogic : MonoBehaviour
         if (Health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.parent.tag == "Chest")
+        {
+
         }
     }
 }

@@ -458,6 +458,11 @@ MonoBehaviour:
   grid: {fileID: 0}
   turretPrefab: {fileID: 717483164449721675, guid: 8fe308bdb1a0af3449cdab47930e6352,
     type: 3}
+  wallPrefab: {fileID: 717483164449721675, guid: caa553d3ae7ea1d4a968a20f03cb4191,
+    type: 3}
+  trapPrefab: {fileID: 717483164449721675, guid: bb1780e5533e62c4aa2867ef2229cf78,
+    type: 3}
+  preview: {fileID: 0}
   txtTurretWood: {fileID: 1625228828606505131}
   txtTurretRock: {fileID: 1625228828762705307}
   txtTurretCrystal: {fileID: 1625228829392653836}

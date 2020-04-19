@@ -32,6 +32,7 @@ public class DayNightManager : MonoBehaviour
     private float currentTime;
     private Vector3 defaultMoonPosition;
     private float defaultGlobalLightIntensity;
+    private float defaultPlayerLightIntensity;
     private bool isDay;
     private bool isPaused;
 
@@ -42,6 +43,7 @@ public class DayNightManager : MonoBehaviour
         instance = this;
         defaultMoonPosition = moonLight.transform.position;
         defaultGlobalLightIntensity = globalLight.intensity;
+        defaultPlayerLightIntensity = playerLight.intensity;
     }
 
     private void Start()
@@ -54,6 +56,7 @@ public class DayNightManager : MonoBehaviour
         currentTime = 0;
         moonLight.enabled = false;
         globalLight.intensity = defaultGlobalLightIntensity;
+        playerLight.intensity = defaultPlayerLightIntensity;
         isDay = true;
 
         OnStartDayEvent();
@@ -78,6 +81,7 @@ public class DayNightManager : MonoBehaviour
         if (isDay && currentTime >= DayDuration * DarkStart)
         {
             globalLight.intensity = Mathf.Lerp(defaultGlobalLightIntensity, NightIntensity, (currentTime - DayDuration * DarkStart) / (DayDuration * DarkStart));
+            playerLight.intensity = Mathf.Lerp(defaultPlayerLightIntensity, NightIntensity, (currentTime - DayDuration * DarkStart) / (DayDuration * DarkStart));
             if (currentTime >= DayDuration)
             {
                 StartNight();
@@ -85,6 +89,7 @@ public class DayNightManager : MonoBehaviour
         }
         else if (!isDay)
         {
+
             moonLight.transform.position = Vector3.Lerp(defaultMoonPosition, endMoonPosition.position, currentTime / NightDuration);
             if (currentTime >= NightDuration)
             {

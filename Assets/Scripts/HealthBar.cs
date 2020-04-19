@@ -25,7 +25,22 @@ public class HealthBar : MonoBehaviour
 
     public void SetSize(float sizeNormalized)
     {
+        if (sizeNormalized >= 1)
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.gameObject.SetActive(true);
+            }
+        }
         bar.localScale = new Vector3(Math.Max(0, sizeNormalized), 1f);
+
     }
     
 }

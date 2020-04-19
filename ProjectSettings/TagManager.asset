@@ -16,6 +16,7 @@ TagManager:
   - Projectile
   - Monster
   - Turret
+  - Chest
   layers:
   - Default
   - TransparentFX
