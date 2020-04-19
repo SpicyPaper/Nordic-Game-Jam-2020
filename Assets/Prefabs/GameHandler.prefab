@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestSpawnersParent: {fileID: 0}
-  chestModel: {fileID: 0}
+  chest: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &5143139002361020576
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ MonoBehaviour:
   enemieSpawnersParent: {fileID: 0}
   enemiesParent: {fileID: 0}
   enemieModel: {fileID: 0}
-  player: {fileID: 0}
+  chest: {fileID: 0}
 --- !u!1 &7650486701653313884
 GameObject:
   m_ObjectHideFlags: 0

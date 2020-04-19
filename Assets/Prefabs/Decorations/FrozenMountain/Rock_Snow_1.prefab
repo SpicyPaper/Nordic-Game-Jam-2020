@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6744054797057327836}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CraftAvoider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,13 +137,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.20262636, y: 0.111973315}
-      - {x: -0.27774835, y: -0.03026469}
-      - {x: -0.0025866171, y: -0.10660949}
-      - {x: 0.2649486, y: -0.0035275668}
-      - {x: 0.16763233, y: 0.080214456}
-      - {x: -0.0012570759, y: 0.15823653}
-      - {x: -0.15050353, y: 0.1483851}
+    - - {x: -0.20507422, y: 0.10462932}
+      - {x: -0.24592438, y: -0.03760867}
+      - {x: -0.017274646, y: -0.11640149}
+      - {x: 0.20619687, y: -0.028007537}
+      - {x: 0.19456038, y: 0.08755845}
+      - {x: 0.020774813, y: 0.14354856}
 --- !u!1 &9160673254095263520
 GameObject:
   m_ObjectHideFlags: 0
