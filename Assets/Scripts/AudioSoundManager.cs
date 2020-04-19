@@ -8,6 +8,7 @@ public class AudioSoundManager : MonoBehaviour
     [SerializeField] private AudioClip audioClipNight;
     [SerializeField] private AudioClip audioClipBloop1;
     [SerializeField] private AudioClip audioClipBloop2;
+    [SerializeField] private AudioClip audioClipFireball;
 
     [SerializeField] private AudioSource mainAudioSource;
     [SerializeField] private AudioSource soundEffectAudioSource;
@@ -17,6 +18,7 @@ public class AudioSoundManager : MonoBehaviour
         DayNightManager.OnStartDayEvent += StartDay;
         DayNightManager.OnStartNightEvent += StartNight;
         IsometricPlayerMovementController.OnElementCollectedEvent += Bloop;
+        IsometricPlayerMovementController.OnShootFireballEvent += Shoot;
     }
 
     private void OnDisable()
@@ -24,6 +26,13 @@ public class AudioSoundManager : MonoBehaviour
         DayNightManager.OnStartDayEvent -= StartDay;
         DayNightManager.OnStartNightEvent -= StartNight;
         IsometricPlayerMovementController.OnElementCollectedEvent -= Bloop;
+        IsometricPlayerMovementController.OnShootFireballEvent -= Shoot;
+    }
+
+    private void Shoot()
+    {
+        soundEffectAudioSource.clip = audioClipFireball;
+        soundEffectAudioSource.Play();
     }
 
     private void Bloop()

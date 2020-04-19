@@ -8,6 +8,9 @@ public class IsometricPlayerMovementController : MonoBehaviour
     public delegate void ElementCollectedEvent();
     public static event ElementCollectedEvent OnElementCollectedEvent;
 
+    public delegate void ShootFireballEvent();
+    public static event ShootFireballEvent OnShootFireballEvent;
+
     public float movementSpeed = 1f;
     public ParticleSystem selectedElementParticleSystemModel;
 
@@ -197,6 +200,8 @@ public class IsometricPlayerMovementController : MonoBehaviour
     {
         if (canAttack)
         {
+            OnShootFireballEvent();
+
             var fireball = Instantiate(FireballPrefab, transform.position, Quaternion.identity).GetComponent<Fireball>();
             fireball.SetDirection(direction);
             fireball.SetDamage(PlayerDamage);
