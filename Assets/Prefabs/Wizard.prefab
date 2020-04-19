@@ -253,6 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 50
+  AttackDamage: 10
+  AttackSpeed: 1
 --- !u!1 &9035077274830801315
 GameObject:
   m_ObjectHideFlags: 0

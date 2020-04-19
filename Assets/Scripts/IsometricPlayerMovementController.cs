@@ -35,7 +35,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     public GameObject FireballPrefab;
 
-    public float PlayerDamage = 5f;
+    public float PlayerDamage = 20f;
 
     public float AttackSpeed = 1 / 2f;
 
@@ -123,7 +123,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             ShootFireball(isoRenderer.GetDirection());
         }

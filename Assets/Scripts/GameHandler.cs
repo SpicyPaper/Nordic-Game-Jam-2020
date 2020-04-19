@@ -9,6 +9,10 @@ public class GameHandler : MonoBehaviour
 
     [SerializeField] private Canvas inGameCanvas;
 
+    public static GameHandler instance;
+
+    public RectTransform ChestHealthRect;
+
     public enum GameState
     {
         PLAY,
@@ -17,10 +21,22 @@ public class GameHandler : MonoBehaviour
 
     private GameState currentGameState;
 
+    public float ChestHealth = 100f;
+
+    private float currentChestHealth;
+
+    public float CurrentChestHealth { get => currentChestHealth; set { currentChestHealth = value; ChestHealthRect.localScale = new Vector3(CurrentChestHealth / ChestHealth, 1, 1); } }
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         currentGameState = GameState.PLAY;
+        CurrentChestHealth = ChestHealth;
     }
 
     private void OnEnable()
@@ -64,4 +80,20 @@ public class GameHandler : MonoBehaviour
 
         OnPauseResumeGameEvent(currentGameState == GameState.PAUSE);
     }
+
+    public void DamageChest(float damage)
+    {
+        CurrentChestHealth = Mathf.Max(0, CurrentChestHealth - damage);
+
+        if (CurrentChestHealth <= 0)
+        {
+            EndGame();
+        }
+    }
+
+    private void EndGame()
+    {
+        // TODO: GAME END
+    }
+
 }

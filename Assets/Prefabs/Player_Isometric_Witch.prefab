@@ -351,7 +351,7 @@ MonoBehaviour:
     type: 3}
   FireballPrefab: {fileID: 8373692753757376659, guid: aedbb2ec2a486674aaf43bc7ca007218,
     type: 3}
-  PlayerDamage: 5
+  PlayerDamage: 20
   AttackSpeed: 0.5
   txtWoodQuantity: {fileID: 0}
   txtStoneQuantity: {fileID: 0}
