@@ -12,6 +12,7 @@ public class AudioSoundManager : MonoBehaviour
 
     [SerializeField] private AudioSource mainAudioSource;
     [SerializeField] private AudioSource soundEffectAudioSource;
+    [SerializeField] private AudioSource soundEffect2AudioSource;
 
     private void OnEnable()
     {
@@ -31,13 +32,13 @@ public class AudioSoundManager : MonoBehaviour
 
     private void Shoot()
     {
-        soundEffectAudioSource.clip = audioClipFireball;
-        soundEffectAudioSource.Play();
+        soundEffect2AudioSource.clip = audioClipFireball;
+        soundEffect2AudioSource.Play();
     }
 
     private void Bloop()
     {
-        int rand = Random.Range(0, 1);
+        int rand = Random.Range(0, 2);
 
         if (rand == 0)
         {

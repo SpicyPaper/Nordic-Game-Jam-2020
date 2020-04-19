@@ -23,8 +23,8 @@ public class EnemiesManager : MonoBehaviour
     private float maxInterval = 5;
     private float maxNumberOfEnemies = 30;
 
-    private float intervalDivisor = 1.2f;
-    private float numberOfEnemiesMult = 1.1f;
+    private float intervalDivisor = 1.5f;
+    private float numberOfEnemiesMult = 1.25f;
 
     private void Awake()
     {
@@ -55,6 +55,7 @@ public class EnemiesManager : MonoBehaviour
         {
             elapsedTimeInterval += Time.deltaTime;
 
+            print(elapsedTimeInterval);
             if (elapsedTimeInterval >= currentInterval)
             {
                 elapsedTimeInterval -= currentInterval;
@@ -86,17 +87,21 @@ public class EnemiesManager : MonoBehaviour
     {
         spawningEnabled = false;
         CurrentLevel++;
-        currentInterval /= intervalDivisor;
-        currentNumberOfEnemies *= numberOfEnemiesMult;
 
-        if (currentInterval >= maxInterval)
+        if (CurrentLevel > 0)
         {
-            currentInterval = maxInterval;
-        }
+            currentInterval /= intervalDivisor;
+            currentNumberOfEnemies *= numberOfEnemiesMult;
 
-        if (currentNumberOfEnemies >= maxNumberOfEnemies)
-        {
-            currentNumberOfEnemies = maxNumberOfEnemies;
+            if (currentInterval <= maxInterval)
+            {
+                currentInterval = maxInterval;
+            }
+
+            if (currentNumberOfEnemies >= maxNumberOfEnemies)
+            {
+                currentNumberOfEnemies = maxNumberOfEnemies;
+            }
         }
 
         print(currentInterval + " " + currentNumberOfEnemies);

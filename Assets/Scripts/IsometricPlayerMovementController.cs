@@ -59,9 +59,9 @@ public class IsometricPlayerMovementController : MonoBehaviour
         selectedElementParticleSystem = Instantiate(selectedElementParticleSystemModel);
         selectedElementParticleSystem.Stop();
 
-        WoodQuantity = 2220;
-        StoneQuantity = 2220;
-        CrystalQuantity = 2220;
+        WoodQuantity = 15;
+        StoneQuantity = 15;
+        CrystalQuantity = 5;
         isPaused = false;
     }
 
