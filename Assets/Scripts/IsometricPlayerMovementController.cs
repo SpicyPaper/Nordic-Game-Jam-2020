@@ -252,8 +252,6 @@ public class IsometricPlayerMovementController : MonoBehaviour
     private void CollectRessource(ResourcesManager.ResourceQuantityType type, int quantity)
     {
         AddRessource(ResourcesManager.GetRessourceType(type), quantity);
-
-        Debug.Log(quantity + " more " + ResourcesManager.GetRessourceString(type) + " collected");
     }
 
     private void AddRessource(ResourcesManager.ResourceType type, int quantity)
@@ -261,13 +259,13 @@ public class IsometricPlayerMovementController : MonoBehaviour
         switch (type)
         {
             case ResourcesManager.ResourceType.WOOD:
-                WoodQuantity += quantity;
+                WoodQuantity += quantity * 2;
                 break;
             case ResourcesManager.ResourceType.STONE:
-                StoneQuantity += quantity;
+                StoneQuantity += quantity * 2;
                 break;
             case ResourcesManager.ResourceType.CRYSTAL:
-                CrystalQuantity += quantity;
+                CrystalQuantity += quantity * 2;
                 break;
             default:
                 break;

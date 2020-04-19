@@ -14,26 +14,21 @@ public class EnemiesManager : MonoBehaviour
 
     private bool spawningEnabled;
     public static int CurrentLevel;
-    /// <summary>
-    /// Item1 = interval in s between each spawning wave
-    /// Item2 = number of enemies spawning each wave
-    /// </summary>
-    private List<Tuple<float, int>> levels;
     List<Transform> availableSpawners;
     private float elapsedTimeInterval;
+
+    private float currentInterval = 30;
+    private float currentNumberOfEnemies = 5;
+
+    private float maxInterval = 1;
+    private float maxNumberOfEnemies = 30;
+
+    private float intervalDivisor = 1.5f;
+    private float numberOfEnemiesMult = 1.5f;
 
     private void Awake()
     {
         CurrentLevel = -1;
-
-        levels = new List<Tuple<float, int>>()
-        {
-            new Tuple<float, int>(20, 5),
-            new Tuple<float, int>(10, 5),
-            new Tuple<float, int>(5, 10),
-            new Tuple<float, int>(5, 15),
-            new Tuple<float, int>(1, 30)
-        };
 
         availableSpawners = new List<Transform>();
         for (int i = 0; i < enemieSpawnersParent.childCount; i++)
@@ -60,11 +55,11 @@ public class EnemiesManager : MonoBehaviour
         {
             elapsedTimeInterval += Time.deltaTime;
 
-            if (elapsedTimeInterval >= levels[CurrentLevel].Item1)
+            if (elapsedTimeInterval >= currentInterval)
             {
-                elapsedTimeInterval -= levels[CurrentLevel].Item1;
+                elapsedTimeInterval -= currentInterval;
 
-                for (int i = 0; i < levels[CurrentLevel].Item2; i++)
+                for (int i = 0; i < currentNumberOfEnemies; i++)
                 {
                     int rand = Random.Range(0, availableSpawners.Count - 1);
 
@@ -84,12 +79,16 @@ public class EnemiesManager : MonoBehaviour
     private void StartNight()
     {
         spawningEnabled = true;
-        elapsedTimeInterval = levels[CurrentLevel].Item1;
+        elapsedTimeInterval = currentInterval;
     }
 
     private void StartDay()
     {
         spawningEnabled = false;
         CurrentLevel++;
+        currentInterval /= intervalDivisor;
+        currentNumberOfEnemies *= numberOfEnemiesMult;
+
+        print(currentInterval + " " + currentNumberOfEnemies);
     }
 }

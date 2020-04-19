@@ -145,13 +145,13 @@ public class ItemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TurretWoodPrice = 10;
-        TurretRockPrice = 10;
-        TurretCrystalPrice = 0;
+        TurretWoodPrice = 15;
+        TurretRockPrice = 15;
+        TurretCrystalPrice = 5;
 
-        WallWoodPrice = 15;
-        WallRockPrice = 15;
-        WallCrystalPrice = 5;
+        WallWoodPrice = 10;
+        WallRockPrice = 10;
+        WallCrystalPrice = 0;
 
         TrapWoodPrice = 10;
         TrapRockPrice = 10;
