@@ -25,13 +25,9 @@ public class PreviewManager : MonoBehaviour
         if (collision.tag == "CraftAvoider")
         {
             collidersInCollision.Add(collision);
-        }
 
-        if (collision.transform.parent != null)
-        {
             if (collision.transform.parent.tag == "Turret" || collision.transform.parent.tag == "Trap")
             {
-                print("OK");
                 CurrentCollidingItem = collision.transform.parent.gameObject;
             }
         }
@@ -42,13 +38,9 @@ public class PreviewManager : MonoBehaviour
         if (collision.tag == "CraftAvoider")
         {
             collidersInCollision.Remove(collision);
-        }
 
-        if (collision.transform.parent != null)
-        {
             if (collision.transform.parent.tag == "Turret" || collision.transform.parent.tag == "Trap")
             {
-                print("OKD");
                 CurrentCollidingItem = null;
             }
         }

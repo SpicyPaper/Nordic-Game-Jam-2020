@@ -193,10 +193,8 @@ public class ItemManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                print("OK1");
                 if (PreviewManager.CurrentCollidingItem != null)
                 {
-                    print("OK2");
                     Destroy(PreviewManager.CurrentCollidingItem);
                 }
             }

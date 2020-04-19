@@ -17,13 +17,13 @@ public class EnemiesManager : MonoBehaviour
     List<Transform> availableSpawners;
     private float elapsedTimeInterval;
 
-    private float currentInterval = 30;
+    private float currentInterval = 60;
     private float currentNumberOfEnemies = 5;
 
-    private float maxInterval = 1;
+    private float maxInterval = 5;
     private float maxNumberOfEnemies = 30;
 
-    private float intervalDivisor = 1.25f;
+    private float intervalDivisor = 1.2f;
     private float numberOfEnemiesMult = 1.1f;
 
     private void Awake()
