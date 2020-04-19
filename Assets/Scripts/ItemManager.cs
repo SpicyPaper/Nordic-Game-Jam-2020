@@ -9,6 +9,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private Grid grid;
     [SerializeField] private GameObject turretPrefab;
     [SerializeField] private GameObject wallPrefab;
+    [SerializeField] private GameObject trapPrefab;
     [SerializeField] private GameObject preview;
 
     [Header("Turret")]
@@ -181,7 +182,7 @@ public class ItemManager : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-
+                Instantiate(trapPrefab, position, Quaternion.identity);
             }
         }
 
