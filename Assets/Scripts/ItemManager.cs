@@ -14,6 +14,8 @@ public class ItemManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI txtTurretRock;
     [SerializeField] TextMeshProUGUI txtTurretCrystal;
 
+    private Vector3 initPos;
+
     private int turretWoodPrice;
 
     public int TurretWoodPrice
@@ -23,7 +25,6 @@ public class ItemManager : MonoBehaviour
             txtTurretWood.text = turretWoodPrice.ToString();
         }
     }
-
 
     private int turretRockPrice;
 
@@ -135,7 +136,6 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private GameObject itemHolder;
     private bool isInItemMod;
 
 
@@ -154,7 +154,9 @@ public class ItemManager : MonoBehaviour
         TurretRockPrice = 15;
         TurretCrystalPrice = 5;
 
-        itemHolder.SetActive(false);
+        initPos = transform.localPosition;
+        isInItemMod = true;
+        EnableDisableItemMode();
     }
 
     // Update is called once per frame
@@ -183,7 +185,14 @@ public class ItemManager : MonoBehaviour
     void EnableDisableItemMode()
     {
         isInItemMod = !isInItemMod;
-        itemHolder.SetActive(isInItemMod);
+        if (isInItemMod)
+        {
+            transform.localPosition = initPos;
+        }
+        else
+        {
+            transform.localPosition += Vector3.down * 180;
+        }
     }
 
 
