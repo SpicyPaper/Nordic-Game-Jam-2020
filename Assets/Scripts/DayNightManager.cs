@@ -100,7 +100,7 @@ public class DayNightManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameHandler.OnPauseResumeGameEvent += PauseResumeGame;
+        GameHandler.OnPauseGameEvent += PauseResumeGame;
     }
 
     private void PauseResumeGame(bool isPaused)
@@ -110,6 +110,6 @@ public class DayNightManager : MonoBehaviour
 
     private void OnDisable()
     {
-        GameHandler.OnPauseResumeGameEvent -= PauseResumeGame;
+        GameHandler.OnPauseGameEvent -= PauseResumeGame;
     }
 }

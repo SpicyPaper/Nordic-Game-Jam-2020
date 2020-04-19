@@ -68,13 +68,13 @@ public class IsometricPlayerMovementController : MonoBehaviour
     private void OnEnable()
     {
         DayNightManager.OnStartNightEvent += StartNight;
-        GameHandler.OnPauseResumeGameEvent += Pause;
+        GameHandler.OnPauseGameEvent += Pause;
     }
 
     private void OnDisable()
     {
         DayNightManager.OnStartNightEvent -= StartNight;
-        GameHandler.OnPauseResumeGameEvent -= Pause;
+        GameHandler.OnPauseGameEvent -= Pause;
     }
 
     private void Pause(bool value)

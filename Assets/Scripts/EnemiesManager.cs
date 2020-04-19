@@ -13,7 +13,7 @@ public class EnemiesManager : MonoBehaviour
     [SerializeField] private GameObject chest;
 
     private bool spawningEnabled;
-    private int currentLevel;
+    public static int CurrentLevel;
     /// <summary>
     /// Item1 = interval in s between each spawning wave
     /// Item2 = number of enemies spawning each wave
@@ -24,7 +24,7 @@ public class EnemiesManager : MonoBehaviour
 
     private void Awake()
     {
-        currentLevel = -1;
+        CurrentLevel = -1;
 
         levels = new List<Tuple<float, int>>()
         {
@@ -60,11 +60,11 @@ public class EnemiesManager : MonoBehaviour
         {
             elapsedTimeInterval += Time.deltaTime;
 
-            if (elapsedTimeInterval >= levels[currentLevel].Item1)
+            if (elapsedTimeInterval >= levels[CurrentLevel].Item1)
             {
-                elapsedTimeInterval -= levels[currentLevel].Item1;
+                elapsedTimeInterval -= levels[CurrentLevel].Item1;
 
-                for (int i = 0; i < levels[currentLevel].Item2; i++)
+                for (int i = 0; i < levels[CurrentLevel].Item2; i++)
                 {
                     int rand = Random.Range(0, availableSpawners.Count - 1);
 
@@ -84,12 +84,12 @@ public class EnemiesManager : MonoBehaviour
     private void StartNight()
     {
         spawningEnabled = true;
-        elapsedTimeInterval = levels[currentLevel].Item1;
+        elapsedTimeInterval = levels[CurrentLevel].Item1;
     }
 
     private void StartDay()
     {
         spawningEnabled = false;
-        currentLevel++;
+        CurrentLevel++;
     }
 }

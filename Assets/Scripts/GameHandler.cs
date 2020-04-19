@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
-    public delegate void PauseResumeGameEvent(bool isPaused);
-    public static event PauseResumeGameEvent OnPauseResumeGameEvent;
+    public delegate void PauseGameEvent(bool isPaused);
+    public static event PauseGameEvent OnPauseGameEvent;
 
     [SerializeField] private Canvas inGameCanvas;
+    [SerializeField] private GameObject endGamePanel;
+    [SerializeField] private TMP_Text nightCount;
 
     public static GameHandler instance;
 
@@ -16,7 +19,8 @@ public class GameHandler : MonoBehaviour
     public enum GameState
     {
         PLAY,
-        PAUSE
+        PAUSE,
+        END
     }
 
     private GameState currentGameState;
@@ -30,6 +34,7 @@ public class GameHandler : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        endGamePanel.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -78,7 +83,7 @@ public class GameHandler : MonoBehaviour
             inGameCanvas.gameObject.SetActive(false);
         }
 
-        OnPauseResumeGameEvent(currentGameState == GameState.PAUSE);
+        OnPauseGameEvent(currentGameState == GameState.PAUSE);
     }
 
     public void DamageChest(float damage)
@@ -93,7 +98,19 @@ public class GameHandler : MonoBehaviour
 
     private void EndGame()
     {
-        // TODO: GAME END
+        currentGameState = GameState.END;
+
+        if (EnemiesManager.CurrentLevel < 2)
+        {
+            nightCount.text = EnemiesManager.CurrentLevel + " night";
+        }
+        else
+        {
+            nightCount.text = EnemiesManager.CurrentLevel + " nights";
+        }
+
+        endGamePanel.SetActive(true);
+        OnPauseGameEvent(true);
     }
 
 }
