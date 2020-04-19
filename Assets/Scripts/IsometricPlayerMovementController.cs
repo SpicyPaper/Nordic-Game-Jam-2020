@@ -92,6 +92,14 @@ public class IsometricPlayerMovementController : MonoBehaviour
         }
     }
 
+    public Vector2 GetPlayerFront()
+    {
+        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
+
+        playerPosition += isoRenderer.GetDirection() * 0.5f;
+        return playerPosition;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

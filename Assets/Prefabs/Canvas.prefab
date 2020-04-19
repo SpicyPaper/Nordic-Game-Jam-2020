@@ -740,6 +740,7 @@ MonoBehaviour:
     type: 3}
   wallPrefab: {fileID: 717483164449721675, guid: caa553d3ae7ea1d4a968a20f03cb4191,
     type: 3}
+  preview: {fileID: 717483164449721675, guid: 12b7418528556904eb1940560c28c4bf, type: 3}
   txtTurretWood: {fileID: 7243666514942246165}
   txtTurretRock: {fileID: 1625228828762705307}
   txtTurretCrystal: {fileID: 1625228829392653836}
