@@ -47,7 +47,11 @@ public class MonsterLogic : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.transform.parent.tag == "Chest" )
+        Transform collideWith = collision.transform;
+        if (collideWith.transform.parent != null)
+            collideWith = collideWith.transform.parent;
+
+        if (collideWith.tag == "Chest" )
         {
             if (canAttack)
             {
@@ -55,9 +59,14 @@ public class MonsterLogic : MonoBehaviour
                 StartCoroutine(WaitForAttack());
             }
         }
-        else if (collision.transform.parent.tag == "Turret")
+        else if (collideWith.tag == "Turret")
         {
-
+            
+            if (canAttack)
+            {
+                collideWith.GetComponent<Damageable>().Damage(AttackDamage);
+                StartCoroutine(WaitForAttack());
+            }
         }
     }
 

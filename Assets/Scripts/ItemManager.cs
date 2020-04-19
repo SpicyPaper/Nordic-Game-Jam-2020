@@ -186,7 +186,7 @@ public class ItemManager : MonoBehaviour
                     Instantiate(wallPrefab, position, Quaternion.identity);
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
+                {
                 Instantiate(trapPrefab, position, Quaternion.identity);
                 }
             }
