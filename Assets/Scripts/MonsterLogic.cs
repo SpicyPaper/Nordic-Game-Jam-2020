@@ -9,6 +9,8 @@ public class MonsterLogic : MonoBehaviour
 
     public float AttackDamage = 10f;
 
+    public float AttackSpeed = 1 / 1f;
+
     private HealthBar healthbar;
 
     private float health;
@@ -24,6 +26,8 @@ public class MonsterLogic : MonoBehaviour
             }
         }
     }
+
+    private bool canAttack = true;
 
     // Start is called before the first frame update
     void Start()
@@ -41,11 +45,26 @@ public class MonsterLogic : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.transform.parent.tag == "Chest")
+        if (collision.transform.parent.tag == "Chest" )
+        {
+            if (canAttack)
+            {
+                GameHandler.instance.DamageChest(AttackDamage);
+                StartCoroutine(WaitForAttack());
+            }
+        }
+        else if (collision.transform.parent.tag == "Turret")
         {
 
         }
+    }
+
+    IEnumerator WaitForAttack()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(AttackSpeed);
+        canAttack = true;
     }
 }
