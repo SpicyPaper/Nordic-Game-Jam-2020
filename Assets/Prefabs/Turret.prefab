@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce462efd6219e9a4d9d3c0720b99b195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TurretDamage: 20
+  TurretDamage: 10
   attackSpeed: 2
   projectilePrefab: {fileID: 8373692753757376659, guid: 14f5a2826209972469aeb35c55e7fd5d,
     type: 3}

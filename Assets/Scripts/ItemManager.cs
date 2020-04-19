@@ -146,16 +146,16 @@ public class ItemManager : MonoBehaviour
     void Start()
     {
         TurretWoodPrice = 10;
-        TurretRockPrice = 15;
-        TurretCrystalPrice = 5;
+        TurretRockPrice = 10;
+        TurretCrystalPrice = 0;
 
-        TurretWoodPrice = 10;
-        TurretRockPrice = 15;
-        TurretCrystalPrice = 5;
+        WallWoodPrice = 15;
+        WallRockPrice = 15;
+        WallCrystalPrice = 5;
 
-        TurretWoodPrice = 10;
-        TurretRockPrice = 15;
-        TurretCrystalPrice = 5;
+        TrapWoodPrice = 10;
+        TrapRockPrice = 10;
+        TrapCrystalPrice = 10;
 
         initPos = transform.localPosition;
         isInItemMod = true;
@@ -179,17 +179,29 @@ public class ItemManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    Instantiate(turretPrefab, position, Quaternion.identity);
+                    SpawnIfMoney(TurretWoodPrice, TurretRockPrice, TurretCrystalPrice, position, turretPrefab);
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    Instantiate(wallPrefab, position, Quaternion.identity);
+                    SpawnIfMoney(WallWoodPrice, WallRockPrice, WallCrystalPrice, position, wallPrefab);
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
-                Instantiate(trapPrefab, position, Quaternion.identity);
+                    SpawnIfMoney(TrapWoodPrice, TrapRockPrice, TrapCrystalPrice, position, trapPrefab);
                 }
             }
+        }
+    }
+
+    private void SpawnIfMoney(int woodPrice, int rockPrice, int crystalPrice, Vector3 position, GameObject prefab)
+    {
+        IsometricPlayerMovementController p = player.GetComponent<IsometricPlayerMovementController>();
+        if (p.WoodQuantity >= woodPrice && p.StoneQuantity >= rockPrice && p.CrystalQuantity >= crystalPrice)
+        {
+            Instantiate(prefab, position, Quaternion.identity);
+            p.WoodQuantity -= woodPrice;
+            p.StoneQuantity -= rockPrice;
+            p.CrystalQuantity -= crystalPrice;
         }
     }
 

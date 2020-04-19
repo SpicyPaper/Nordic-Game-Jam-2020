@@ -29,7 +29,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     public GameObject FireballPrefab;
 
-    public float PlayerDamage = 5f;
+    public float PlayerDamage = 20f;
 
     public float AttackSpeed = 1 / 2f;
 
