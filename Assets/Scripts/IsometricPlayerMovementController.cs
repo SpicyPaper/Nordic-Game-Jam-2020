@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -29,6 +30,10 @@ public class IsometricPlayerMovementController : MonoBehaviour
     public GameObject FireballPrefab;
 
     public float PlayerDamage = 5f;
+
+    public float AttackSpeed = 1 / 2f;
+
+    private bool canAttack = true;
 
     [SerializeField] private TextMeshProUGUI txtWoodQuantity;
     [SerializeField] private TextMeshProUGUI txtStoneQuantity;
@@ -176,9 +181,20 @@ public class IsometricPlayerMovementController : MonoBehaviour
 
     private void ShootFireball(Vector2 direction)
     {
-        var fireball = Instantiate(FireballPrefab, transform.position, Quaternion.identity).GetComponent<Fireball>();
-        fireball.SetDirection(direction);
-        fireball.SetDamage(PlayerDamage);
+        if (canAttack)
+        {
+            var fireball = Instantiate(FireballPrefab, transform.position, Quaternion.identity).GetComponent<Fireball>();
+            fireball.SetDirection(direction);
+            fireball.SetDamage(PlayerDamage);
+            StartCoroutine(AttackDelay());
+        }
+    }
+
+    IEnumerator AttackDelay()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(AttackSpeed);
+        canAttack = true;
     }
 
     // Update is called once per frame

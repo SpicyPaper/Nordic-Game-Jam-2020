@@ -17,6 +17,7 @@ TagManager:
   - Monster
   - Turret
   - CraftAvoider
+  - Chest
   layers:
   - Default
   - TransparentFX
