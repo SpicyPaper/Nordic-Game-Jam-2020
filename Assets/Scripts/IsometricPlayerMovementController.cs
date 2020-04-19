@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class IsometricPlayerMovementController : MonoBehaviour
 {
+    public delegate void ElementCollectedEvent();
+    public static event ElementCollectedEvent OnElementCollectedEvent;
+
     public float movementSpeed = 1f;
     public ParticleSystem selectedElementParticleSystemModel;
 
@@ -161,6 +164,7 @@ public class IsometricPlayerMovementController : MonoBehaviour
                     isAbleToCollect = false;
                     isRessourceCurrentlyCollected = false;
 
+                    OnElementCollectedEvent();
                     CollectOneRessource(currentResourceQuantityType);
                     Destroy(currentProducer);
                 }
