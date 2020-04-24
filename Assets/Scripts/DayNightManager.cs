@@ -28,6 +28,7 @@ public class DayNightManager : MonoBehaviour
     [SerializeField] private Light2D moonLight;
     [SerializeField] private Light2D playerLight;
     [SerializeField] private Transform endMoonPosition;
+    [SerializeField] private Transform clockSprite;
 
     private float currentTime;
     private Vector3 defaultMoonPosition;
@@ -76,7 +77,22 @@ public class DayNightManager : MonoBehaviour
     void Update()
     {
         if (!isPaused)
+        {
             currentTime += Time.deltaTime;
+
+            if (isDay)
+            {
+                float perc = currentTime / DayDuration;
+                float angle = perc * 180 + 90;
+                clockSprite.eulerAngles = Vector3.forward * angle;
+            }
+            else
+            {
+                float perc = currentTime / NightDuration;
+                float angle = perc * 180 - 90;
+                clockSprite.eulerAngles = Vector3.forward * angle;
+            }
+        }
 
         if (isDay && currentTime >= DayDuration * DarkStart)
         {
